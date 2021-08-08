@@ -31,11 +31,22 @@ export default function SearchBar() {
                         onChange={(event) => {
                             setName(event.target.value);
                         }}
+                        onKeyDown={(event) => {
+                            if (event.keyCode === 13) {
+                                dispatch(addCity(name));
+                                event.preventDefault();
+                                setName(""); // searchBar initialization
+                                return false;
+                            }
+                        }}
                     />
                     <Button
                         variant="outline-success"
-                        onClick={() => dispatch(addCity(name))}
-                    >Add</Button>
+                        type="button"
+                        onClick={() => {
+                            dispatch(addCity(name));
+                            setName("");
+                        }}>ADD</Button>
                 </Navbar.Collapse>
             </Container>
 
