@@ -6,6 +6,8 @@ const API_KEY = "4bc24589ea6c357b1047473b713d25eb"
 
 export function addCity(name) {
     return (dispatch) => {
+        dispatch({type: 'START_LOADING'});
+        dispatch({type: 'CLEAR_ERRORS'});
         axios.get(API_URI, {
             params: {
                 q: name,
@@ -18,7 +20,15 @@ export function addCity(name) {
                 payload: data
             });
         }).catch((error) => {
-            console.log(error);
-        });
+            // console.log(error.response.data);
+            dispatch({
+                type: 'ERROR',
+                payload: error.response.data
+            })            
+        }).then(() => {
+            dispatch({
+                type: 'END_LOADING'
+            });
+        })
     }
 }
