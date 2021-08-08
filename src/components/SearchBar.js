@@ -1,7 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux'
 import { Navbar, Container, Nav, Form, Button } from 'react-bootstrap';
 
 export default function SearchBar() {
+
+    const [name, setName] = useState(""); // 첫 시작은 빈값
+    const dispatch = useDispatch()
+
     return (
         <Navbar bg="light" expand="lg">
             <Container>
@@ -17,13 +22,19 @@ export default function SearchBar() {
                         <Nav.Link href="#action2">Link</Nav.Link>
                     </Nav>
                     <Form.Control
-                        type="search"
-                        placeholder="Search"
+                        type="text"
+                        placeholder="Add"
                         className="mr-2"
-                        aria-label="Search"
-
+                        aria-label="Add"
+                        value={name}
+                        onChange={(event) => {
+                            setName(event.target.value);
+                        }}
                     />
-                    <Button variant="outline-success">Search</Button>
+                    <Button
+                        variant="outline-success"
+                        onClick={() => dispatch({ type: 'ADD_CITY', payload: name})}
+                    >Add</Button>
                 </Navbar.Collapse>
             </Container>
 

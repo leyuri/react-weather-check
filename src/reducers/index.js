@@ -41,6 +41,9 @@ const initialState = {
 };
 const reducer = produce((state, action) => {
     switch(action.type) {
+        case 'ADD_CITY' :
+            state.cities.push(action.payload);
+            break;
         default:
             break;
     }
