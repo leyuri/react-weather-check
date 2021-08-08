@@ -13,8 +13,8 @@ export default function WeatherList() {
                     <tr>
                         <th>City</th>
                         <th>Temperature</th>
-                        <th>Humidity</th>
                         <th>Pressure</th>
+                        <th>Humidity</th>
                     </tr>
                 </thead>
                 <tbody>
