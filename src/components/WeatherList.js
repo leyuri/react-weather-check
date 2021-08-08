@@ -18,7 +18,7 @@ export default function WeatherList() {
                     </tr>
                 </thead>
                 <tbody>
-                    {cities.map(item => (<WeatherItem data={item} />))}
+                    {cities.map(item => (<WeatherItem key={item.id} data={item} />))}
                 </tbody>
             </Table>
         </div>
