@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux'
 import { Navbar, Container, Nav, Form, Button } from 'react-bootstrap';
+import { addCity } from '../action/index';
 
 export default function SearchBar() {
 
@@ -33,12 +34,11 @@ export default function SearchBar() {
                     />
                     <Button
                         variant="outline-success"
-                        onClick={() => dispatch({ type: 'ADD_CITY', payload: name})}
+                        onClick={() => dispatch(addCity(name))}
                     >Add</Button>
                 </Navbar.Collapse>
             </Container>
 
         </Navbar>
     )
-
 }
