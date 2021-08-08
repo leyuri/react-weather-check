@@ -1,12 +1,15 @@
 import React from 'react';
 
 export default function WeatherItem({data}) {
+    const { city, list}  = data;
+    const name = city.name;
+    const { temp, pressure, humidity} = list[0].main;
     return (
         <tr>
-            <td>{data.city}</td>
-            <td>{data.temp}</td>
-            <td>{data.pressure}</td>
-            <td>{data.humidity}</td>
+            <td>{name}</td>
+            <td>{temp}</td>
+            <td>{pressure}</td>
+            <td>{humidity}</td>
         </tr>
     )
 }

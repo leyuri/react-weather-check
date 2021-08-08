@@ -13,17 +13,9 @@ export function addCity(name) {
                 units: 'metric'
             }
         }).then(({ data }) => {
-            const { city, list } = data;
-            const { temp, pressure, humidity } = list[0].main;
-
             dispatch({
                 type: 'ADD_CITY',
-                payload:
-                {
-                    id: city.id,
-                    city: city.name,
-                    list: list, temp, pressure, humidity
-                }
+                payload: data
             });
         }).catch((error) => {
             console.log(error);
