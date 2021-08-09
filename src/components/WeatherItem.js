@@ -2,12 +2,15 @@
 
 import React from 'react';
 import styled from 'styled-components'
-import { Sparklines, SparklinesLine, SparklinesReferenceLine } from 'react-sparklines';
+import { Sparklines, SparklinesLine, SparklinesReferenceLine, SparklinesBars } from 'react-sparklines';
 
-const StyledDiv = styled.div`
+const StyledMapTd = styled.td`
   width: 250px;
-  height: 150px;
+  border: 1px solid #fff;
   
+`;
+const StyledTextTd = styled.td`
+    font-size: 1.5rem;
 `;
 
 export default class WeatherItem extends React.Component {
@@ -28,18 +31,18 @@ export default class WeatherItem extends React.Component {
     render() {
         const { city, list } = this.props.data;
         const name = city.name;
-        const { temp, pressure, humidity } = list[0].main;
+        const { temp, pressure } = list[0].main;
         const temps = list.map(v => v.main.temp);
+        const humidities = list.map(v => v.main.humidity);
         console.log(name);
         console.log(temps);
 
         return (
             <tr>
-                <td>
-                    <StyledDiv ref={this.mapRef} ></StyledDiv>
-                </td>
-                <td>{name}</td>
-                <td>{temp}</td>
+                <StyledMapTd ref={this.mapRef} ></StyledMapTd>
+                <StyledTextTd style={{ paddingTop : '75px'}}>{name}</StyledTextTd>
+                <StyledTextTd style={{ paddingTop : '75px'}}>{pressure}</StyledTextTd>
+                <StyledTextTd style={{ paddingTop : '75px'}}>{temp}</StyledTextTd>
                 <td>
                     <Sparklines data={temps} style={{ background: "#00bdcc" }} margin={10} height={150}>
                         <SparklinesLine style={{ stroke: "white", fill: "none" }} />
@@ -47,9 +50,12 @@ export default class WeatherItem extends React.Component {
                             style={{ stroke: 'white', strokeOpacity: .75, strokeDasharray: '2, 2' }} />
                     </Sparklines>
                 </td>
-                <td>{pressure}</td>
-                <td>{humidity}</td>
-            </tr>
+                <td>
+                    <Sparklines data={humidities} style={{ background: "rgb(255 152 0)" }} height={150}>
+                        <SparklinesBars style={{ fill: "#fff" }} />
+                    </Sparklines>
+                </td>
+            </tr >
         )
     }
 }

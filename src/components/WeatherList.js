@@ -13,10 +13,13 @@ export default function WeatherList() {
                     <tr>
                         <th>Map</th>
                         <th>City</th>
-                        <th>Temperature</th>
-                        <th>Temperature-Chart</th>
                         <th>Pressure</th>
-                        <th>Humidity</th>
+                        <th>Temperature</th>
+                        <th>Temperature-chart</th>
+                        <th>{'\u00A0'}{'\u00A0'}{'\u00A0'}
+                            Humidity-chart
+                            {'\u00A0'}{'\u00A0'}{'\u00A0'}{'\u00A0'}
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
