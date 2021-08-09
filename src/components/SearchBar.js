@@ -1,9 +1,16 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { Navbar, Container, Nav, Form, Button } from 'react-bootstrap';
-import { addCity } from '../action/index';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSpinner } from '@fortawesome/free-solid-svg-icons'
+import styled from 'styled-components'
+
+import { addCity } from '../action/index';
+
+const StyledFormControl = styled(Form.Control)`
+    border: 1px solid #ff9800;
+    margin-right: 10px;
+`;
 
 export default function SearchBar() {
 
@@ -25,7 +32,7 @@ export default function SearchBar() {
                         <Nav.Link href="#action1">Home</Nav.Link>
                         <Nav.Link href="#action2">Link</Nav.Link>
                     </Nav>
-                    <Form.Control
+                    <StyledFormControl
                         type="text"
                         placeholder="Add"
                         className="mr-2"
@@ -53,7 +60,7 @@ export default function SearchBar() {
                             dispatch(addCity(name));
                             setName("");
                         }}>
-                        {loading && (<FontAwesomeIcon icon={faSpinner} spin />)} 
+                        {loading && (<FontAwesomeIcon icon={faSpinner} spin />)}
                         {/* loading 이 없을 때 */}
                         {!loading && "ADD"}
                     </Button>
