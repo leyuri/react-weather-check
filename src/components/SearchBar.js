@@ -8,7 +8,6 @@ import styled from 'styled-components'
 import { addCity } from '../action/index';
 
 const StyledFormControl = styled(Form.Control)`
-    border: 1px solid #ff9800;
     margin-right: 10px;
 `;
 
@@ -19,7 +18,7 @@ export default function SearchBar() {
     const loading = useSelector(state => state.loading)
 
     return (
-        <Navbar bg="light" expand="lg">
+        <Navbar bg="success" variant="dark">
             <Container>
                 <Navbar.Brand href="#">🌦 weather checker 🌦 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="navbarScroll" />
@@ -29,14 +28,12 @@ export default function SearchBar() {
                         style={{ maxHeight: '100px' }}
                         navbarScroll
                     >
-                        <Nav.Link href="#action1">Home</Nav.Link>
-                        <Nav.Link href="#action2">Link</Nav.Link>
                     </Nav>
                     <StyledFormControl
                         type="text"
-                        placeholder="Add"
+                        placeholder="Please enter city name"
                         className="mr-2"
-                        aria-label="Add"
+                        aria-label="ADD"
                         value={name}
                         onChange={(event) => {
                             setName(event.target.value);
@@ -54,7 +51,7 @@ export default function SearchBar() {
                     />
                     <Button
                         disabled={loading}
-                        variant="outline-success"
+                        variant="danger"
                         type="button"
                         onClick={() => {
                             dispatch(addCity(name));

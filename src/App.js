@@ -13,7 +13,6 @@ function App() {
         <WeatherList />
       </Container>
     </div>
-
   );
 }
 
