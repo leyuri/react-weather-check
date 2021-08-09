@@ -14,6 +14,7 @@ export default function WeatherList() {
                         <th>Map</th>
                         <th>City</th>
                         <th>Temperature</th>
+                        <th>Temperature-Chart</th>
                         <th>Pressure</th>
                         <th>Humidity</th>
                     </tr>
