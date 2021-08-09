@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { Navbar, Container, Nav, Form, Button } from 'react-bootstrap';
 import { addCity } from '../action/index';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSpinner } from '@fortawesome/free-solid-svg-icons'
 
 export default function SearchBar() {
 
     const [name, setName] = useState(""); // 첫 시작은 빈값
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
+    const loading = useSelector(state => state.loading)
 
     return (
         <Navbar bg="light" expand="lg">
@@ -33,20 +36,27 @@ export default function SearchBar() {
                         }}
                         onKeyDown={(event) => {
                             if (event.keyCode === 13) {
-                                dispatch(addCity(name));
+                                if (!loading) { // If it's not loading
+                                    dispatch(addCity(name));
+                                    setName(""); // searchBar initialization
+                                }
                                 event.preventDefault();
-                                setName(""); // searchBar initialization
                                 return false;
                             }
                         }}
                     />
                     <Button
+                        disabled={loading}
                         variant="outline-success"
                         type="button"
                         onClick={() => {
                             dispatch(addCity(name));
                             setName("");
-                        }}>ADD</Button>
+                        }}>
+                        {loading && (<FontAwesomeIcon icon={faSpinner} spin />)} 
+                        {/* loading 이 없을 때 */}
+                        {!loading && "ADD"}
+                    </Button>
                 </Navbar.Collapse>
             </Container>
 
