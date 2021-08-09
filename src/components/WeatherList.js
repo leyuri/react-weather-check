@@ -11,6 +11,7 @@ export default function WeatherList() {
             <Table className="mt-2" striped bordered hover>
                 <thead>
                     <tr>
+                        <th>Map</th>
                         <th>City</th>
                         <th>Temperature</th>
                         <th>Pressure</th>
