@@ -2,11 +2,12 @@
 
 import React from 'react';
 import styled from 'styled-components'
-import { Sparklines, SparklinesLine } from 'react-sparklines';
+import { Sparklines, SparklinesLine, SparklinesReferenceLine } from 'react-sparklines';
 
-const StyledDiv = styled.td`
+const StyledDiv = styled.div`
   width: 250px;
   height: 150px;
+  
 `;
 
 export default class WeatherItem extends React.Component {
@@ -29,16 +30,21 @@ export default class WeatherItem extends React.Component {
         const name = city.name;
         const { temp, pressure, humidity } = list[0].main;
         const temps = list.map(v => v.main.temp);
-        // console.log(temps);
+        console.log(name);
+        console.log(temps);
 
         return (
             <tr>
-                <StyledDiv ref={this.mapRef} ></StyledDiv>
+                <td>
+                    <StyledDiv ref={this.mapRef} ></StyledDiv>
+                </td>
                 <td>{name}</td>
                 <td>{temp}</td>
                 <td>
-                    <Sparklines data={temps} height={150}>
-                        <SparklinesLine color="blue" />
+                    <Sparklines data={temps} style={{ background: "#00bdcc" }} margin={10} height={150}>
+                        <SparklinesLine style={{ stroke: "white", fill: "none" }} />
+                        <SparklinesReferenceLine
+                            style={{ stroke: 'white', strokeOpacity: .75, strokeDasharray: '2, 2' }} />
                     </Sparklines>
                 </td>
                 <td>{pressure}</td>
