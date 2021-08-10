@@ -8,7 +8,7 @@ export default function ErrorMessage() {
         return <div />;
     }
     return (
-        <Alert variant='danger'>
+        <Alert className="mt-3" variant='danger'>
             Error: {error.message}
         </Alert>
     )

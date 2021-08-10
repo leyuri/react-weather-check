@@ -4,7 +4,7 @@ import axios from 'axios';
 const API_URI = "http://api.openweathermap.org/data/2.5/forecast"
 const API_KEY = "4bc24589ea6c357b1047473b713d25eb"
 
-export function addCity(name) {
+export function searchCity(name) {
     return (dispatch) => {
         dispatch({type: 'START_LOADING'});
         dispatch({type: 'CREAR_ERRORS'});
@@ -16,7 +16,7 @@ export function addCity(name) {
             }
         }).then(({ data }) => {
             dispatch({
-                type: 'ADD_CITY',
+                type: 'SEARCH_CITY',
                 payload: data
             });
         }).catch((error) => {

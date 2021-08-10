@@ -9,7 +9,7 @@ const initialState = {
 const reducer = produce((state, action) => {
     // console.log(action);
     switch(action.type) {
-        case 'ADD_CITY' :
+        case 'SEARCH_CITY' :
             state.cities.push(action.payload);
             break;
         case 'ERROR' :

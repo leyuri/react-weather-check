@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSpinner } from '@fortawesome/free-solid-svg-icons'
 import styled from 'styled-components'
 
-import { addCity } from '../action/index';
+import { searchCity } from '../action/index';
 
 const StyledFormControl = styled(Form.Control)`
     margin-right: 10px;
@@ -33,7 +33,7 @@ export default function SearchBar() {
                         type="text"
                         placeholder="Please enter city name"
                         className="mr-2"
-                        aria-label="ADD"
+                        aria-label="Search"
                         value={name}
                         onChange={(event) => {
                             setName(event.target.value);
@@ -41,7 +41,7 @@ export default function SearchBar() {
                         onKeyDown={(event) => {
                             if (event.keyCode === 13) {
                                 if (!loading) { // If it's not loading
-                                    dispatch(addCity(name));
+                                    dispatch(searchCity(name));
                                     setName(""); // searchBar initialization
                                 }
                                 event.preventDefault();
@@ -54,12 +54,12 @@ export default function SearchBar() {
                         variant="danger"
                         type="button"
                         onClick={() => {
-                            dispatch(addCity(name));
+                            dispatch(searchCity(name));
                             setName("");
                         }}>
                         {loading && (<FontAwesomeIcon icon={faSpinner} spin />)}
                         {/* loading 이 없을 때 */}
-                        {!loading && "ADD"}
+                        {!loading && "Search"}
                     </Button>
                 </Navbar.Collapse>
             </Container>
